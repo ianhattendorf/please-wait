@@ -26,7 +26,7 @@
   for key, val of transEndEventNames
     if elm.style[key]?
       transitionEvent = val
-      transitionSupport = true
+      transitionSupport = false # TODO transitioning is currently broken
       break
 
   if elm.style.animationName? then animationSupport = true

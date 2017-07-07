@@ -18,7 +18,7 @@
     factory(root);
   }
 })(this, function(exports) {
-  var PleaseWait, addClass, animationEvent, animationSupport, domPrefixes, elm, key, pfx, pleaseWait, removeClass, transEndEventNames, transitionEvent, transitionSupport, val, _i, _len;
+  var PleaseWait, addClass, animationEvent, animationSupport, domPrefixes, elm, i, key, len, pfx, pleaseWait, removeClass, transEndEventNames, transitionEvent, transitionSupport, val;
   elm = document.createElement('fakeelement');
   animationSupport = false;
   transitionSupport = false;
@@ -36,7 +36,7 @@
     val = transEndEventNames[key];
     if (elm.style[key] != null) {
       transitionEvent = val;
-      transitionSupport = true;
+      transitionSupport = false;
       break;
     }
   }
@@ -44,9 +44,9 @@
     animationSupport = true;
   }
   if (!animationSupport) {
-    for (_i = 0, _len = domPrefixes.length; _i < _len; _i++) {
-      pfx = domPrefixes[_i];
-      if (elm.style["" + pfx + "AnimationName"] != null) {
+    for (i = 0, len = domPrefixes.length; i < len; i++) {
+      pfx = domPrefixes[i];
+      if (elm.style[pfx + "AnimationName"] != null) {
         switch (pfx) {
           case 'Webkit':
             animationEvent = 'webkitAnimationEnd';
@@ -204,16 +204,16 @@
     };
 
     PleaseWait.prototype.updateOptions = function(options) {
-      var k, v, _results;
+      var k, results, v;
       if (options == null) {
         options = {};
       }
-      _results = [];
+      results = [];
       for (k in options) {
         v = options[k];
-        _results.push(this.updateOption(k, v));
+        results.push(this.updateOption(k, v));
       }
-      return _results;
+      return results;
     };
 
     PleaseWait.prototype.updateLoadingHtml = function(loadingHtml, immediately) {
